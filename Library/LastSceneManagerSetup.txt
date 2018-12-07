@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/ToLua/Examples/09_Dictionary/UseDictionary.unity
+  isLoaded: 1
+  isActive: 1
