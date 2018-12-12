@@ -12,9 +12,21 @@ public class SceneMgr{
             if(_instance == null)
             {
                 _instance = new SceneMgr();
-                
             }
             return _instance;
         }
     }
+    public void Init()
+    {
+        EventMgr.Instance.Add((int)EventID.SceneEvent.SynLoad,SynLoad);
+    }
+
+    public void SynLoad(object meg)
+    {
+        string name = (string)meg;
+        UnityEngine.SceneManagement.SceneManager.LoadScene(name);
+    }
+
+
+
 }
