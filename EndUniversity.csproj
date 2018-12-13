@@ -155,10 +155,23 @@
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+    <Compile Include="Assets\Game\Scripts\Game.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\AI\AIView.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventID.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\SceneMgr.cs" />
+    <Compile Include="Assets\Game\Scripts\Manager\UIMgr.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\Controller\LoadCtr.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\Controller\LogoCtr.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\ChooseLevelPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\ChoosemodelPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\GameOverPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\GamePanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\LoadPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\LogoPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\MainPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\UI\View\SettingPanel.cs" />
+    <Compile Include="Assets\Game\Scripts\Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\EasyTouchBundle\EasyTouch\How to migrate from EasyTouch 4.X.txt" />
