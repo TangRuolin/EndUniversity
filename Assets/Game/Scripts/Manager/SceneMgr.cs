@@ -19,6 +19,7 @@ public class SceneMgr{
     public void Init()
     {
         EventMgr.Instance.Add((int)EventID.SceneEvent.SynLoad,SynLoad);
+        EventMgr.Instance.Add((int)EventID.SceneEvent.AsynLoad, AsynLoad);
     }
 
     public void SynLoad(object meg)
@@ -27,6 +28,10 @@ public class SceneMgr{
         UnityEngine.SceneManagement.SceneManager.LoadScene(name);
     }
 
+    public void AsynLoad(object meg)
+    {
+
+    }
 
 
 }

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/ToLua/Examples/09_Dictionary/UseDictionary.unity
+- path: Assets/Game/Scenes/Logo.unity
   isLoaded: 1
   isActive: 1
