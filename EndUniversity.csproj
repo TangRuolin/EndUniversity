@@ -155,6 +155,7 @@
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCInput.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
+    <Compile Include="Assets\Game\Scripts\Const.cs" />
     <Compile Include="Assets\Game\Scripts\Game.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\AI\AIView.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventID.cs" />
