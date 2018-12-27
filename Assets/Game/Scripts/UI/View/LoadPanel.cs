@@ -9,10 +9,13 @@ namespace Game
         // Use this for initialization
         void Start()
         {
-            LoadCtr.Instance.Init();
+           
+        }
+        private void Update()
+        {
+            
         }
 
-        
     }
 }
 

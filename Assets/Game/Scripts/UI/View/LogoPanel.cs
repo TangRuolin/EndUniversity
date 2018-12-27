@@ -24,19 +24,6 @@ namespace Game
         void Show()
         {
             text.transform.GetComponent<Text>().DOFade(1, 3);
-            object meg = (object)LoadScene();
-           // EventMgr.Instance.Trigger((int)EventID.UtilsEvent.StartCoroutine, meg);
-        }
-        /// <summary>
-        /// 场景切换
-        /// </summary>
-        /// <returns></returns>
-        IEnumerator LoadScene()
-        {
-            yield return new WaitForSeconds(Const.logoBiaoyuTime);
-            string scene = "Main";
-            object meg = scene;
-            EventMgr.Instance.Trigger((int)EventID.SceneEvent.AsynLoad, meg);
         }
 
     }

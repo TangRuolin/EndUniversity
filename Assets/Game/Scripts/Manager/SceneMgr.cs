@@ -18,6 +18,9 @@ namespace Game
                 return _instance;
             }
         }
+        /// <summary>
+        /// 初始化
+        /// </summary>
         public void Init()
         {
             EventMgr.Instance.Add((int)EventID.SceneEvent.SynLoad, SynLoad);
@@ -43,14 +46,14 @@ namespace Game
             string name = (string)meg;
             object asynMeg = AsynLoading(name);
             EventMgr.Instance.Trigger((int)EventID.UtilsEvent.StartCoroutine, asynMeg);
-            object loadMeg = async;
-            EventMgr.Instance.Trigger((int)EventID.UIEvent.LoadPanel, loadMeg);
         }
         IEnumerator AsynLoading(string name)
         {
             async = UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(name);
             async.allowSceneActivation = false;
-            yield return async;
+            object loadMeg = async;
+            EventMgr.Instance.Trigger((int)EventID.UIEvent.LoadPanel, loadMeg);
+            yield return null;
         }
 
     }
