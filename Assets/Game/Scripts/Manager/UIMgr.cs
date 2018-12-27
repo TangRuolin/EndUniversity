@@ -2,19 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIMgr{
-
-    private static UIMgr _instance;
-    public static UIMgr Intance
+namespace Game
+{
+    public class UIMgr
     {
-        get
+
+        private static UIMgr _instance;
+        public static UIMgr Intance
         {
-            if(_instance == null)
+            get
             {
-                _instance = new UIMgr();
+                if (_instance == null)
+                {
+                    _instance = new UIMgr();
+                }
+                return _instance;
             }
-            return _instance;
         }
+
     }
-   
 }
+

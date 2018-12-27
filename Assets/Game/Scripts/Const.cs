@@ -2,8 +2,12 @@
 
 using System.Collections;
 using System.Collections.Generic;
+namespace Game
+{
+    public class Const
+    {
 
-public class Const {
-
-    public const float logoTitleSpe = 1;
+        public const float logoBiaoyuTime = 3.5f;
+    }
 }
+
