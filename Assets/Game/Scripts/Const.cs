@@ -8,6 +8,8 @@ namespace Game
     {
 
         public const float logoBiaoyuTime = 3.5f;
+        public const string LoadBGPath = "Texture/Load/";
+        public static System.Random random = new System.Random();
     }
 }
 

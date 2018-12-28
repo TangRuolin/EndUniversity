@@ -175,10 +175,11 @@
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCJoystick.cs" />
     <Compile Include="Assets\EasyTouchBundle\EasyTouchControls\Plugins\ETCTouchPad.cs" />
     <Compile Include="Assets\Game\Scripts\Const.cs" />
-    <Compile Include="Assets\Game\Scripts\GameStart.cs" />
+    <Compile Include="Assets\Game\Scripts\GameManager.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\AI\AIView.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventID.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventMgr.cs" />
+    <Compile Include="Assets\Game\Scripts\Manager\ResourceLoadMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\SceneMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\UIMgr.cs" />
     <Compile Include="Assets\Game\Scripts\UI\Controller\LoadCtr.cs" />

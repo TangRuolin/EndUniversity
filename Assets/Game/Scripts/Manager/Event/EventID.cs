@@ -11,8 +11,7 @@ namespace Game
         /// </summary>
         public enum SceneEvent
         {
-            SynLoad = 1,
-            AsynLoad = 2,
+            
         }
         /// <summary>
         /// 工具事件的id，区间为（10,100）
@@ -21,6 +20,8 @@ namespace Game
         {
             StartCoroutine = 11,
             StopCoroutine = 12,
+            SynLoad = 13,
+            AsynLoad = 14,
         }
 
         /// <summary>

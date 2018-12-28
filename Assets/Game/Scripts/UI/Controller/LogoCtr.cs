@@ -17,6 +17,7 @@ namespace Game
                 return _instance;
             }
         }
+
         /// <summary>
         /// logo场景初始化
         /// </summary>
@@ -25,11 +26,16 @@ namespace Game
             object meg = (object)LoadScene();
             EventMgr.Instance.Trigger((int)EventID.UtilsEvent.StartCoroutine, meg);
         }
+
+        /// <summary>
+        /// 加载下一场景
+        /// </summary>
+        /// <returns></returns>
         IEnumerator LoadScene()
         {
             yield return new WaitForSeconds(Const.logoBiaoyuTime);
             string scene = "Main";
-            EventMgr.Instance.Trigger((int)EventID.SceneEvent.AsynLoad, (object)scene);
+            EventMgr.Instance.Trigger((int)EventID.UtilsEvent.SynLoad, (object)scene);
         }
 
 
