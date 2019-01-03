@@ -179,6 +179,8 @@
     <Compile Include="Assets\Game\Scripts\Logic\AI\AIMove.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\AI\AIView.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\Camera\MyCamera.cs" />
+    <Compile Include="Assets\Game\Scripts\Logic\Character\Character.cs" />
+    <Compile Include="Assets\Game\Scripts\Logic\Character\Player.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventID.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\ResourceLoadMgr.cs" />

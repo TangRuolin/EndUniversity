@@ -15,6 +15,6 @@ public class AIMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-       // agent.SetDestination(target.transform.position);
+       agent.SetDestination(target.transform.position);
 	}
 }
