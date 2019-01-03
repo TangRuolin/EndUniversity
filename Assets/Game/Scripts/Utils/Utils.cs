@@ -46,6 +46,8 @@ namespace Game
         }
         #endregion
 
+        ///加载场景功能
+        #region
         /// <summary>
         /// 同步加载场景
         /// </summary>
@@ -77,7 +79,7 @@ namespace Game
             // EventMgr.Instance.Trigger((int)EventID.UIEvent.LoadPanel, loadMeg);
             yield return null;
         }
-
+        #endregion
     }
 }
 
