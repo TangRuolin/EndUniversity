@@ -33,6 +33,17 @@ namespace Game
             LoadPanel = 102,
         }
 
+        /// <summary>
+        /// 动画事件的id，区间为（200,300）
+        /// </summary>
+        public enum AnimEvent
+        {
+            PlayerMove = 201,
+            PlayerDead = 202,
+            PlayerJump = 203,  //尚未用到（Jump动画制作比较难）
+            PlayerSkill = 204,
+            PlayerAttack = 205,
+        }
 
     }
 }
