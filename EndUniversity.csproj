@@ -151,6 +151,7 @@
     <Compile Include="Assets\Game\Scripts\Logic\Character\Character.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\Character\Player\Player.cs" />
     <Compile Include="Assets\Game\Scripts\Logic\Character\Player\PlayerAction.cs" />
+    <Compile Include="Assets\Game\Scripts\Logic\Character\Player\PlayerCtr.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventID.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\Event\EventMgr.cs" />
     <Compile Include="Assets\Game\Scripts\Manager\ResourceLoadMgr.cs" />

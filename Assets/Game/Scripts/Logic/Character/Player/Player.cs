@@ -17,21 +17,37 @@ namespace Game
                 if (_instance == null)
                 {
                     _instance = new Player();
+                    _instance.Init();
                 }
                 return _instance;
             }
         }
 
         public int _attackNum { get; private set; }  //攻击次数，用于判断有没有触发强力攻击
+        public int moveSpe { get; private set; }  //玩家移动速度
+        private bool _isQuick;    //玩家是否快速移动
 
+        
         /// <summary>
         /// 初始化
         /// </summary>
         public void Init()
         {
             _attackNum = 0;
+            moveSpe = Const.playerMoveSpe;
+            _isQuick = false;
+            EventMgr.Instance.Add((int)EventID.PlayerEvent.moveSpeChange,SetIsQuick);
         }
 
+        /// <summary>
+        /// 玩家移速是否更改
+        /// </summary>
+        /// <param name="meg"></param>
+        private void SetIsQuick(object meg)
+        {
+            bool isQ = (bool)meg;
+            _isQuick = isQ;
+        }
         //角色动画控制
         #region
         /// <summary>
@@ -61,7 +77,18 @@ namespace Game
         /// </summary>
         public void Move()
         {
-            object meg = 0.9;
+            float num;
+            if (_isQuick)
+            {
+                moveSpe = Const.playerMoveSpeQ;
+                num = 1f;
+            }
+            else
+            {
+                moveSpe = Const.playerMoveSpe;
+                num = 0.9f;
+            }
+            object meg = num;
             EventMgr.Instance.Trigger((int)EventID.AnimEvent.PlayerMove, meg);
         }
         /// <summary>
@@ -69,15 +96,8 @@ namespace Game
         /// </summary>
         public void Idel()
         {
-            object meg = 0;
-            EventMgr.Instance.Trigger((int)EventID.AnimEvent.PlayerMove, meg);
-        }
-        /// <summary>
-        /// 角色快速移动
-        /// </summary>
-        public void MoveQuick()
-        {
-            object meg = 1;
+            float num = 0f;
+            object meg = num;
             EventMgr.Instance.Trigger((int)EventID.AnimEvent.PlayerMove, meg);
         }
         #endregion

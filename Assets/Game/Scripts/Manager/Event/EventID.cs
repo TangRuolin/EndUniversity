@@ -45,6 +45,13 @@ namespace Game
             PlayerAttack = 205,
         }
 
+        /// <summary>
+        ///玩家事件ID ，区间为（300,400）
+        /// </summary>
+        public enum PlayerEvent
+        {
+            moveSpeChange = 301,
+        }
     }
 }
 

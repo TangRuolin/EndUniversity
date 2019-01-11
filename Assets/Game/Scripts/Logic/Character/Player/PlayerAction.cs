@@ -8,8 +8,11 @@ namespace Game
     {
 
         Animator anim;
+        private float _num;
+        IEnumerator ieMove;
         private void Start()
         {
+            _num = 0;
             anim = this.GetComponent<Animator>();
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerMove,SetMove);
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerDead, Dead);
@@ -20,13 +23,44 @@ namespace Game
         /// 角色静止或跑动
         /// </summary>
         /// <param name="num"></param>静止：0，跑动：0.9，加速跑：1
-        private void SetMove(object num)
+        private void SetMove(object meg)
         {
+            float num = (float)meg;
+            if(_num == num)
+            {
+                return;
+            }
+            if (ieMove != null)
+            {
+                StopCoroutine(ieMove);
+            }
             if (anim == null)
             {
                 return;
             }
-            anim.SetFloat("MoveOrIdel", (float)num);
+            ieMove = SetMoveIE(_num, num);
+            _num = num;
+            StartCoroutine(ieMove);
+        }
+
+        private IEnumerator SetMoveIE(float start,float end)
+        {
+            if(start <= end)
+            {
+                for (float i = start; i <= end; i += 0.01f)
+                {
+                    anim.SetFloat("MoveOrIdle", i);
+                    yield return null;
+                }
+            }
+            else
+            {
+                for (float i = start; i >= end; i -= 0.01f)
+                {
+                    anim.SetFloat("MoveOrIdle", i);
+                    yield return null;
+                }
+            }
         }
         /// <summary>
         /// 角色死亡

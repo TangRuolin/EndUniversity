@@ -5,17 +5,22 @@ using UnityEngine;
 public class MyCamera : MonoBehaviour {
 
 
-    GameObject cameraPos;
-    GameObject cube;
+    GameObject _player;
+    GameObject _lookAt;
+    Vector3 _oldPos;
+    Vector3 _offset;
 	// Use this for initialization
 	void Start () {
-        cameraPos = GameObject.Find("CameraPos");
-        cube = GameObject.Find("LookAt");
+        _player = GameObject.Find("Player");
+        _lookAt = GameObject.Find("LookAt");
+        _oldPos = _player.transform.position;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        this.transform.position = cameraPos.transform.position;
-        this.transform.LookAt(cube.transform);
+        _offset = _player.transform.position - _oldPos;
+        _oldPos = _player.transform.position;
+        this.transform.position += _offset;
+        this.transform.LookAt(_lookAt.transform);
 	}
 }
