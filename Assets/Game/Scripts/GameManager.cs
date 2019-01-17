@@ -17,15 +17,15 @@ namespace Game
             this.gameObject.AddComponent<Utils>().Init();
             SceneMgr.Instance.Init();
         }
-        private void Start()
-        {
-            loadBG = RLBG();
-        }
+        //private void Start()
+        //{
+        //    loadBG = RLBG();
+        //}
 
-        private Sprite[] RLBG()
-        {
-            return Resources.LoadAll<Sprite>(Const.LoadBGPath);
-        }
+        //private Sprite[] RLBG()
+        //{
+        //    return Resources.LoadAll<Sprite>(Const.LoadBGPath);
+        //}
 
 
     }

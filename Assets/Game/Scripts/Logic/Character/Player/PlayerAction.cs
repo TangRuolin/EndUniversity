@@ -10,6 +10,8 @@ namespace Game
         Animator anim;
         private float _num;
         IEnumerator ieMove;
+        public GameObject arrowModel;
+        public Transform arrowPos;
         private void Start()
         {
             _num = 0;
@@ -19,6 +21,8 @@ namespace Game
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerSkill, SetSkill);
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerAttack, SetAttack);
         }
+
+
         /// <summary>
         /// 角色静止或跑动
         /// </summary>
@@ -47,7 +51,7 @@ namespace Game
         {
             if(start <= end)
             {
-                for (float i = start; i <= end; i += 0.01f)
+                for (float i = start; i <= end; i += 0.02f)
                 {
                     anim.SetFloat("MoveOrIdle", i);
                     yield return null;
@@ -55,7 +59,7 @@ namespace Game
             }
             else
             {
-                for (float i = start; i >= end; i -= 0.01f)
+                for (float i = start; i >= end; i -= 0.02f)
                 {
                     anim.SetFloat("MoveOrIdle", i);
                     yield return null;
@@ -71,8 +75,8 @@ namespace Game
             {
                 return;
             }
+            Player.Instance.canMove = false;
             anim.SetBool("Dead", true);
-            anim.SetBool("Dead", false);
         }
        
         /// <summary>
@@ -85,8 +89,9 @@ namespace Game
             {
                 return;
             }
+            Player.Instance.canMove = false;
             anim.SetInteger("Skill", (int)skill);
-            anim.SetInteger("Skill", 0);
+            
         }
         /// <summary>
         /// 角色攻击（普攻的第三次是强力攻击）
@@ -98,8 +103,34 @@ namespace Game
             {
                 return;
             }
+            Player.Instance.canMove = false;
             anim.SetInteger("Attack", (int)attack);
+        }
+
+        /// <summary>
+        /// 攻击之后回复到state动画
+        /// </summary>
+        public void AttackOver()
+        {
             anim.SetInteger("Attack", 0);
+            Player.Instance.canMove = true;
+        }
+        /// <summary>
+        /// 释放技能之后回复到state动画
+        /// </summary>
+        public void SkillOver()
+        {
+            anim.SetInteger("Skill", 0);
+            Player.Instance.canMove = true;
+        }
+        /// <summary>
+        /// 死亡后重新设定
+        /// </summary>
+        public void DeadOver()
+        {
+            anim.SetBool("Dead", false);
+            Player.Instance.canMove = true;
+
         }
     }
 

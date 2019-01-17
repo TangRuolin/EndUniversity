@@ -6,6 +6,8 @@ namespace Game
 {
     public class PlayerCtr : MonoBehaviour
     {
+        public GameObject AttackRange;
+
         private void OnEnable()
         {
             EasyJoystick.On_JoystickMove += JoystickMove;
@@ -19,6 +21,10 @@ namespace Game
         {
             if(move.joystickName == "MoveJoystick")
             {
+                if (!Player.Instance.canMove)
+                {
+                    return;
+                }
                 float joyPosX = move.joystickAxis.x;
                 float joyPosY = move.joystickAxis.y;
 
@@ -41,6 +47,22 @@ namespace Game
                 Player.Instance.Idel();
             }
         }
+
+        /// <summary>
+        /// 攻击按钮事件
+        /// </summary>
+        public void AttackBtnUp()
+        {
+            AttackRange.SetActive(false);
+            Player.Instance.Attack();
+
+        }
+        public void AttackBtnDown()
+        {
+            AttackRange.SetActive(true);
+        }
+
+
     }
 }
 

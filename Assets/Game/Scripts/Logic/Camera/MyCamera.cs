@@ -21,6 +21,5 @@ public class MyCamera : MonoBehaviour {
         _offset = _player.transform.position - _oldPos;
         _oldPos = _player.transform.position;
         this.transform.position += _offset;
-        this.transform.LookAt(_lookAt.transform);
 	}
 }

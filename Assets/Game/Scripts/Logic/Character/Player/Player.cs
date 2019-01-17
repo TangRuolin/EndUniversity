@@ -24,8 +24,12 @@ namespace Game
         }
 
         public int _attackNum { get; private set; }  //攻击次数，用于判断有没有触发强力攻击
-        public int moveSpe { get; private set; }  //玩家移动速度
+        public float moveSpe { get; private set; }  //玩家移动速度
         private bool _isQuick;    //玩家是否快速移动
+        public bool canMove { get; set; }
+        private List<GameObject> arrows;
+        private GameObject arrowModel;
+        private Transform arrowPos;
 
         
         /// <summary>
@@ -34,9 +38,12 @@ namespace Game
         public void Init()
         {
             _attackNum = 0;
-            moveSpe = Const.playerMoveSpe;
+            moveSpe = 0;
             _isQuick = false;
+            canMove = true;
             EventMgr.Instance.Add((int)EventID.PlayerEvent.moveSpeChange,SetIsQuick);
+            arrows = new List<GameObject>();
+            
         }
 
         /// <summary>
@@ -58,10 +65,23 @@ namespace Game
             _attackNum++;
             object meg = _attackNum;
             EventMgr.Instance.Trigger((int)EventID.AnimEvent.PlayerAttack,meg);
-            if(_attackNum == 3)
+            if (_attackNum == 3)
             {
+                CreateArrow(3);
                 _attackNum = 0;
+                return;
             }
+            CreateArrow(1);
+        }
+        /// <summary>
+        /// 创建箭矢
+        /// </summary>
+        private void CreateArrow(int num)
+        {
+            GameObject arrow = GameObject.Instantiate(arrowModel);
+            arrow.transform.position = arrowPos.position;
+            arrow.transform.rotation = arrowPos.rotation;
+            arrows.Add(arrow);
         }
         /// <summary>
         /// 技能攻击
@@ -88,9 +108,12 @@ namespace Game
                 moveSpe = Const.playerMoveSpe;
                 num = 0.9f;
             }
+            
             object meg = num;
             EventMgr.Instance.Trigger((int)EventID.AnimEvent.PlayerMove, meg);
         }
+
+
         /// <summary>
         /// 角色静止
         /// </summary>
