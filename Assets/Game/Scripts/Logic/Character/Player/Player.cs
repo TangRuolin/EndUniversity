@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG;
+using DG.Tweening;
 
 namespace Game
 {
@@ -28,8 +30,9 @@ namespace Game
         private bool _isQuick;    //玩家是否快速移动
         public bool canMove { get; set; }
         private List<GameObject> arrows;
-        private GameObject arrowModel;
-        private Transform arrowPos;
+        public GameObject arrowModel;
+        public Transform arrowPos;
+        private IEnumerator arrowMove;
 
         
         /// <summary>
@@ -43,7 +46,6 @@ namespace Game
             canMove = true;
             EventMgr.Instance.Add((int)EventID.PlayerEvent.moveSpeChange,SetIsQuick);
             arrows = new List<GameObject>();
-            
         }
 
         /// <summary>
@@ -62,26 +64,61 @@ namespace Game
         /// </summary>
         public void Attack()
         {
-            _attackNum++;
+            //_attackNum++;
+            _attackNum = 1;
             object meg = _attackNum;
             EventMgr.Instance.Trigger((int)EventID.AnimEvent.PlayerAttack,meg);
-            if (_attackNum == 3)
-            {
-                CreateArrow(3);
-                _attackNum = 0;
-                return;
-            }
-            CreateArrow(1);
+            //if (_attackNum == 3)
+            //{
+            //    CreateArrow(3);
+            //    _attackNum = 0;
+            //    return;
+            //}
+            CreateArrow();
+            
         }
         /// <summary>
         /// 创建箭矢
         /// </summary>
-        private void CreateArrow(int num)
+        private void CreateArrow()
         {
-            GameObject arrow = GameObject.Instantiate(arrowModel);
-            arrow.transform.position = arrowPos.position;
-            arrow.transform.rotation = arrowPos.rotation;
-            arrows.Add(arrow);
+            GameObject arrow;
+            if (arrows.Count == 0)
+            {
+                arrow = GameObject.Instantiate(arrowModel);
+               // arrow.transform.SetParent(arrowPos);
+                arrows.Add(arrow);
+            }
+            else
+            {
+                arrow = arrows[0];
+            } 
+            arrow.transform.position = arrowPos.transform.position;
+            arrow.transform.rotation = arrowModel.transform.rotation;
+            if(arrowMove != null)
+            {
+                object message = arrowMove;
+                EventMgr.Instance.Trigger((int)EventID.UtilsEvent.StopCoroutine, message);
+            }
+            arrowMove = ArrowMove(arrow);
+            object meg = arrowMove;
+            EventMgr.Instance.Trigger((int)EventID.UtilsEvent.StartCoroutine, meg);
+        }
+
+        IEnumerator ArrowMove(GameObject arrow)
+        {
+            float distance = 0;
+            yield return new WaitForSeconds(Const.arrowMoveYieldTime);
+            arrow.SetActive(true);
+            while(distance < Const.arrowMoveDis)
+            {
+                distance += Time.deltaTime * Const.arrowMoveSpe;
+                arrow.transform.Translate(Vector3.forward * Time.deltaTime * Const.arrowMoveSpe);
+                yield return null;
+            }
+            
+            yield return new WaitForSeconds(Const.arrowContinue);
+            arrow.SetActive(false);
         }
         /// <summary>
         /// 技能攻击

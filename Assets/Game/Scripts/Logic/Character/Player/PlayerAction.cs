@@ -10,8 +10,7 @@ namespace Game
         Animator anim;
         private float _num;
         IEnumerator ieMove;
-        public GameObject arrowModel;
-        public Transform arrowPos;
+       
         private void Start()
         {
             _num = 0;
@@ -20,6 +19,7 @@ namespace Game
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerDead, Dead);
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerSkill, SetSkill);
             EventMgr.Instance.Add((int)EventID.AnimEvent.PlayerAttack, SetAttack);
+          
         }
 
 
@@ -51,7 +51,7 @@ namespace Game
         {
             if(start <= end)
             {
-                for (float i = start; i <= end; i += 0.02f)
+                for (float i = start; i <= end; i += Const.playerMoveChangeTime)
                 {
                     anim.SetFloat("MoveOrIdle", i);
                     yield return null;
@@ -59,7 +59,7 @@ namespace Game
             }
             else
             {
-                for (float i = start; i >= end; i -= 0.02f)
+                for (float i = start; i >= end; i -= Const.playerMoveChangeTime)
                 {
                     anim.SetFloat("MoveOrIdle", i);
                     yield return null;
